@@ -12,47 +12,52 @@ class AuthScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F7F7),
-      body: Obx(() => Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          _buildHeader(),
-          const SizedBox(height: 30),
-          Container(
-            padding: const EdgeInsets.all(24),
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              // color: Colors.red,
-              border: Border(
-                top: BorderSide(color: Colors.grey.shade600),
-              ),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              ),
-            ),
+      resizeToAvoidBottomInset: true,
+      body: Obx(
+        () => SafeArea(
+          child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const SizedBox(height: 20),
-                authController.isLogin.value
-                    ? _buildLoginForm()
-                    : _buildSignupForm(),
+                _buildHeader(),
+                const SizedBox(height: 30),
+                Container(
+                  padding: const EdgeInsets.all(24),
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(color: Colors.grey.shade600),
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const SizedBox(height: 20),
+                      authController.isLogin.value
+                          ? _buildLoginForm()
+                          : _buildSignupForm(),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-        ],
-      )),
+        ),
+      ),
     );
   }
 
   Widget _buildHeader() {
-    return Column(
-      children: [
-        Image.asset(
-          'assets/images/img1.png', // replace with your logo path
-          height: 60,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 30),
+      child: Image.asset(
+        'assets/images/img1.png', // replace with your logo path
+        height: 60,
+      ),
     );
   }
 
@@ -72,7 +77,7 @@ class AuthScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.grey[600]),
           ),
-          SizedBox(height:30),
+          SizedBox(height: 30),
           CustomInputField(
             hintText: 'Email address',
             suffixIcon: Icons.email_outlined,
@@ -90,19 +95,23 @@ class AuthScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 200),
-            child: Text('Forgot Password?',style: TextStyle(color: Colors.blue),),
+            child: Text(
+              'Forgot Password?',
+              style: TextStyle(color: Colors.blue),
+            ),
           ),
           const SizedBox(height: 200),
           _buildToggleText(),
           const SizedBox(height: 20),
           Obx(() => CustomButton(
-            text: authController.isLoading.value ? 'Signing In...' : 'Sign In',
-            onPressed: authController.isLoading.value
-                ? null
-                : () => authController.submitLogin(),
-          )),
+                text: authController.isLoading.value
+                    ? 'Signing In...'
+                    : 'Sign In',
+                onPressed: authController.isLoading.value
+                    ? null
+                    : () => authController.submitLogin(),
+              )),
           const SizedBox(height: 16),
-
         ],
       ),
     );
@@ -125,7 +134,6 @@ class AuthScreen extends StatelessWidget {
             style: TextStyle(color: Colors.grey[600]),
           ),
           const SizedBox(height: 28),
-
           CustomInputField(
             hintText: 'Name',
             suffixIcon: Icons.person_outline,
@@ -142,15 +150,15 @@ class AuthScreen extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Obx(() => CustomInputField(
-            hintText: 'Password',
-            obscureText: authController.obscurePassword.value,
-            suffixIcon: authController.obscurePassword.value
-                ? Icons.visibility_off
-                : Icons.visibility,
-            // onSuffixTap: authController.toggleObscurePassword,
-            controller: authController.passwordController,
-            validator: Validators.validatePassword,
-          )),
+                hintText: 'Password',
+                obscureText: authController.obscurePassword.value,
+                suffixIcon: authController.obscurePassword.value
+                    ? Icons.visibility_off
+                    : Icons.visibility,
+                // onSuffixTap: authController.toggleObscurePassword,
+                controller: authController.passwordController,
+                validator: Validators.validatePassword,
+              )),
           const SizedBox(height: 16),
           CustomInputField(
             hintText: 'Mobile number',
@@ -161,33 +169,35 @@ class AuthScreen extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           Obx(() => Row(
-            children: [
-              Checkbox(
-                value: authController.agreeToTerms.value,
-                onChanged: authController.toggleTermsAgreement,
-              ),
-              const Text('I agree to the '),
-              GestureDetector(
-                onTap: () {},
-                child: const Text(
-                  'Terms and Conditions',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    decoration: TextDecoration.underline,
+                children: [
+                  Checkbox(
+                    value: authController.agreeToTerms.value,
+                    onChanged: authController.toggleTermsAgreement,
                   ),
-                ),
-              ),
-            ],
-          )),
+                  const Text('I agree to the '),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'Terms and Conditions',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ],
+              )),
           const SizedBox(height: 16),
           _buildToggleText(),
           const SizedBox(height: 16),
           Obx(() => CustomButton(
-            text: authController.isLoading.value ? 'Registering...' : 'Sign Up',
-            onPressed: authController.isLoading.value
-                ? null
-                : () => authController.startOtpVerification(),
-          )),
+                text: authController.isLoading.value
+                    ? 'Registering...'
+                    : 'Sign Up',
+                onPressed: authController.isLoading.value
+                    ? null
+                    : () => authController.startOtpVerification(),
+              )),
           const SizedBox(height: 16),
         ],
       ),

@@ -50,7 +50,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           counterText: '',
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
         ),
         onChanged: (val) {
           if (val.isNotEmpty && index < 5) {
@@ -63,26 +65,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     );
   }
 
-  // // Helper to save up to 10 users
-  // Future<void> saveUser(String name, String email) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   String? usersJson = prefs.getString('users');
-  //   List users = usersJson != null ? jsonDecode(usersJson) : [];
-  //   users.add({'name': name, 'email': email});
-  //   if (users.length > 10) users = users.sublist(users.length - 10);
-  //   prefs.setString('users', jsonEncode(users));
-  // }
-
-  // Helper to get users
-  Future<List<Map<String, String>>> getUsers() async {
-    final prefs = await SharedPreferences.getInstance();
-    String? usersJson = prefs.getString('users');
-    if (usersJson == null) return [];
-    List users = jsonDecode(usersJson);
-    return users.map<Map<String, String>>((u) => {'name': u['name'], 'email': u['email']}).toList();
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,17 +73,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/img1.png', // replace with your logo path
-                    height: 60,
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 30),
+                child: Image.asset(
+                  'assets/images/img1.png', // replace with your logo path
+                  height: 60,
+                ),
               ),
-              const SizedBox(height: 30),
               Container(
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
@@ -138,7 +116,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(6, (index) => otpBox(index)),
                       ),
-                      const SizedBox(height: 210),
+                      const SizedBox(height: 250),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -178,8 +156,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                               await authController.verifyOtp(widget.email, otp);
 
                           if (otpValid) {
-                            var name = authController.nameController.text.trim();
-                            var email = authController.emailController.text.trim();
+                            var name =
+                                authController.nameController.text.trim();
+                            var email =
+                                authController.emailController.text.trim();
                             await StorageService.saveUser(name, email);
                             Get.offAll(() => HomeScreen());
                           } else {

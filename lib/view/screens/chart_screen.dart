@@ -12,16 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ChartScreen extends StatelessWidget {
   final controller = Get.put(ChartScreenController());
 
-  //
-  // Future<Map<String, String>> getCurrentUser() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   String? usersJson = prefs.getString('users');
-  //   if (usersJson == null) return {'name': '', 'email': ''};
-  //   List users = jsonDecode(usersJson);
-  //   if (users.isEmpty) return {'name': '', 'email': ''};
-  //   final user = users.last;
-  //   return {'name': user['name'] ?? '', 'email': user['email'] ?? ''};
-  // }
 
   @override
   Widget build(BuildContext context) {
