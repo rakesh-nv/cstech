@@ -95,8 +95,8 @@ class AuthService {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({'email': email}),
     );
-    // print('Status Code: ${response.statusCode}');
-    // print('Body: ${response.body}');
+    print('Status Code: ${response.statusCode}');
+    print('Body: ${response.body}');
     switch (response.statusCode) {
       case 200:
         return true;

@@ -231,12 +231,8 @@ class AuthScreen extends StatelessWidget {
           _buildToggleText(),
           const SizedBox(height: 16),
           Obx(() => CustomButton(
-                text: authController.isLoading.value
-                    ? 'Registering...'
-                    : 'Sign Up',
-                onPressed: authController.isLoading.value
-                    ? null
-                    : () => authController.startOtpVerification(),
+                text: authController.isLoading.value ? 'Registering...' : 'Sign Up',
+                onPressed: authController.isLoading.value ? null : () => authController.startOtpVerification(),
               )),
           const SizedBox(height: 16),
         ],
