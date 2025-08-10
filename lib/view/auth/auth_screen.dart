@@ -1,5 +1,6 @@
 import 'package:cstech_test/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../utils/validators.dart';
 import '../../widgets/CustomInputField.dart';
@@ -36,7 +37,7 @@ class AuthScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 10),
                       authController.isLogin.value
                           ? _buildLoginForm()
                           : _buildSignupForm(),
@@ -133,14 +134,14 @@ class AuthScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.grey[600]),
           ),
-          const SizedBox(height: 28),
+          const SizedBox(height: 15),
           CustomInputField(
             hintText: 'Name',
             suffixIcon: Icons.person_outline,
             controller: authController.nameController,
             validator: Validators.validateName,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           CustomInputField(
             hintText: 'Email address',
             suffixIcon: Icons.email_outlined,
@@ -148,17 +149,57 @@ class AuthScreen extends StatelessWidget {
             controller: authController.emailController,
             validator: Validators.validateEmail,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           Obx(() => CustomInputField(
                 hintText: 'Password',
                 obscureText: authController.obscurePassword.value,
-                suffixIcon: authController.obscurePassword.value
-                    ? Icons.visibility_off
-                    : Icons.visibility,
-                // onSuffixTap: authController.toggleObscurePassword,
+                suffixIcon: Icons.lock_outline,
                 controller: authController.passwordController,
                 validator: Validators.validatePassword,
               )),
+          const SizedBox(height: 10),
+          TextFormField(
+            style: const TextStyle(fontSize: 16),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              suffixIcon: Icon(FontAwesomeIcons.whatsapp),
+              prefixIcon: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Row(
+                  children: [
+                    Image.asset('assets/images/indFlag.png', scale: 5),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      '91+',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey.shade400, width: 1.1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.blue.shade400, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red.shade700, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.red.shade700, width: 1.5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
           const SizedBox(height: 16),
           CustomInputField(
             hintText: 'Mobile number',
@@ -167,7 +208,6 @@ class AuthScreen extends StatelessWidget {
             keyboardType: TextInputType.phone,
             validator: Validators.validateMobile,
           ),
-          const SizedBox(height: 10),
           Obx(() => Row(
                 children: [
                   Checkbox(
@@ -187,7 +227,7 @@ class AuthScreen extends StatelessWidget {
                   ),
                 ],
               )),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           _buildToggleText(),
           const SizedBox(height: 16),
           Obx(() => CustomButton(
