@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
-    const videoUrl = 'https://www.youtube.com/watch?v=ddcZnW1HKUY&list=PLjxrf2q8roU35U96Vu3pWkSfixB-7RqFK'; // Replace with your video
+    const videoUrl = 'https://www.youtube.com/watch?v=ddcZnW1HKUY&list=PLjxrf2q8roU35U96Vu3pWkSfixB-7RqFK';
     final videoId = YoutubePlayer.convertUrlToId(videoUrl)!;
 
     _youtubeController = YoutubePlayerController(
@@ -83,7 +83,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            // Instruction + YouTube video
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Container(
@@ -122,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const Spacer(),
 
-            // Bottom button section
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               child: Row(

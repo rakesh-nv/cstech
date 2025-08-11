@@ -7,7 +7,7 @@ import '../utils/exceptions.dart';
 class AuthService {
   final baseUrl = 'https://mock-api.calleyacd.com/api/auth';
 
-  // ----------------- REGISTER -----------------
+  // register uset
   Future<Map<String, dynamic>> registerUser({
     required String username,
     required String email,
@@ -47,7 +47,7 @@ class AuthService {
     }
   }
 
-  // ----------------- LOGIN -----------------
+  //  LOGIN uset
   Future<Map<String, dynamic>> loginUser({
     required String email,
     required String password,
@@ -83,7 +83,7 @@ class AuthService {
     }
   }
 
-// -------------  sending otp --------------
+//sending otp to gmail
 
   Future<bool> sendOtp({
     required String email,
@@ -115,7 +115,7 @@ class AuthService {
     }
   }
 
-// -------------------verify otp ----------------
+//  otp verigyotp
   Future<Map<String, dynamic>> verifyOtp({
     required String email,
     required String otp,

@@ -56,7 +56,7 @@ class AuthScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 30),
       child: Image.asset(
-        'assets/images/img1.png', // replace with your logo path
+        'assets/images/img1.png',
         height: 60,
       ),
     );

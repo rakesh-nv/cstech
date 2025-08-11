@@ -40,7 +40,6 @@ class ChartScreen extends StatelessWidget {
                 padding: EdgeInsets.all(16),
                 child: Column(
                   children: [
-                    // Test List Card
                     Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
@@ -106,7 +105,6 @@ class ChartScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: 40),
-                    // Donut Chart
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 60),
                       child: SizedBox(
@@ -119,7 +117,6 @@ class ChartScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: 24),
-                    // Legend with counts
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -142,7 +139,7 @@ class ChartScreen extends StatelessWidget {
                     ),
 
                     SizedBox(height: 40),
-                    // Button
+
                     CustomButton(
                       text: 'Start Calling Now',
                       onPressed: () {},
@@ -245,7 +242,7 @@ class _CallStatsPainter extends CustomPainter {
     ];
     final colors = [Colors.orange, Colors.blue, Colors.purple];
     final total = values.reduce((a, b) => a + b);
-    const gap = 6; // gap between segments in degrees
+    const gap = 6;
 
     double currentAngle = startAngle;
     for (int i = 0; i < values.length; i++) {
@@ -253,7 +250,7 @@ class _CallStatsPainter extends CustomPainter {
       final paint = Paint()
         ..color = colors[i]
         ..style = PaintingStyle.stroke
-        ..strokeWidth = (i == 2) ? 58 : 38 // thicker for purple segment
+        ..strokeWidth = (i == 2) ? 58 : 38
         ..strokeCap = StrokeCap.butt;
       canvas.drawArc(
         rect.deflate(10),

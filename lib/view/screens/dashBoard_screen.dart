@@ -90,7 +90,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   ),
                   child: Stack(
                     children: [
-                      // Blue Header Container
                       Container(
                         decoration: const BoxDecoration(
                           color: Color(0xFF1A237E),
@@ -99,7 +98,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         height: 400,
                       ),
 
-                      // Title Text Positioned at Top Center
                       const Positioned(
                         top: 16,
                         left: 0,
@@ -115,10 +113,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         ),
                       ),
 
-                      // Red Content Container Positioned Below Header Title
                       Positioned(
                         top: 50,
-                        // Adjust this based on spacing needs
                         left: 0,
                         right: 0,
                         bottom: 0,
@@ -176,7 +172,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               ),
 
               const Spacer(),
-              // WhatsApp and Start Calling buttons
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20),
                 child: Row(
@@ -291,7 +286,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
                   child: Column(
                     children: [
-                      // Select Calling List + Refresh Button
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 16, vertical: 12),
@@ -308,7 +302,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                             ),
                             ElevatedButton.icon(
                               onPressed: () {
-                                // Refresh logic here
                               },
                               icon: const Icon(
                                 Icons.refresh,

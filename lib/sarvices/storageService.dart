@@ -21,15 +21,5 @@ class StorageService {
     if (users.length > 10) users = users.sublist(users.length - 10);
     prefs.setString('users', jsonEncode(users));
   }
-  //
-  // static Future<List<Map<String, String>>> getUsers() async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   String? usersJson = prefs.getString('users');
-  //   if (usersJson == null) return [];
-  //   List users = jsonDecode(usersJson);
-  //   return users
-  //       .map<Map<String, String>>(
-  //           (u) => {'name': u['name'], 'email': u['email']})
-  //       .toList();
-  // }
+
 }

@@ -75,7 +75,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 30),
                 child: Image.asset(
-                  'assets/images/img1.png', // replace with your logo path
+                  'assets/images/img1.png',
                   height: 60,
                 ),
               ),

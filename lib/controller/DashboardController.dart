@@ -6,7 +6,7 @@ class DashboardController extends GetxController {
 
   @override
   void onInit() {
-    bottomSheetOpen.value = false; // reset on screen load
+    bottomSheetOpen.value = false;
     super.onInit();
   }
 }
